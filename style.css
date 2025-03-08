@@ -42,12 +42,12 @@ body {
 }
 
 .container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
-/* Navigation */
 .navbar {
     position: fixed;
     top: 0;
@@ -64,6 +64,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -75,6 +76,8 @@ body {
 .nav-links {
     display: flex;
     gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .nav-link {
@@ -123,11 +126,10 @@ body {
     transform: rotate(30deg);
 }
 
-/* Hero Section */
 .hero {
+    display: grid;
+    place-items: center;
     height: 100vh;
-    display: flex;
-    align-items: center;
     padding-top: 80px;
 }
 
@@ -137,8 +139,8 @@ body {
 
 .profile-container {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: min(200px, 50%);
+    aspect-ratio: 1 / 1;
     margin: 0 auto 2rem;
 }
 
@@ -206,7 +208,6 @@ body {
     }
 }
 
-/* Section Styles */
 .section {
     padding: 6rem 0;
 }
@@ -229,7 +230,6 @@ body {
     background-color: var(--primary);
 }
 
-/* About Section */
 .about-content {
     max-width: 800px;
     margin: 0 auto;
@@ -266,7 +266,6 @@ body {
     color: var(--primary);
 }
 
-/* Skills Section */
 .skills-container {
     max-width: 800px;
     margin: 0 auto;
@@ -296,7 +295,6 @@ body {
     transition: width 1.5s ease-in-out;
 }
 
-/* Contact Section */
 .contact-content {
     max-width: 600px;
     margin: 0 auto;
@@ -385,7 +383,7 @@ textarea {
     transform: translateY(-1px);
 }
 
-/* Footer */
+
 .footer {
     background-color: var(--card);
     padding: 3rem 0;
@@ -393,10 +391,10 @@ textarea {
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
     align-items: center;
-    margin-bottom: 2rem;
 }
 
 .footer-logo {
@@ -408,6 +406,7 @@ textarea {
 .footer-links {
     display: flex;
     gap: 2rem;
+    justify-content: center;
 }
 
 .footer-links a {
@@ -426,7 +425,6 @@ textarea {
     font-size: 0.9rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
         padding: 1rem 0;
@@ -434,6 +432,7 @@ textarea {
     
     .nav-links {
         gap: 1rem;
+        justify-content: center;
     }
     
     .hero h1 {
@@ -442,11 +441,6 @@ textarea {
     
     .section-title {
         font-size: 2rem;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        gap: 1.5rem;
     }
 }
 
