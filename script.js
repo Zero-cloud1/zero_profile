@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Smooth scroll for navigation links
+    // Smooth scroll for navigation links with refined easing
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Animate skill bars
+    // Animate skill bars with refined animation
     const skills = document.querySelectorAll('.progress');
     const observerOptions = {
         threshold: 0.2,
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     skills.forEach(skill => observer.observe(skill));
 
-    // Form submission using Fetch API
+    // Form submission with enhanced feedback
     const contactForm = document.getElementById('contact-form');
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(contactForm);
         
         try {
-            // เปลี่ยน URL ให้ชี้ไปที่ PHP API บน InfinityFree
-            const response = await fetch('https://zero-profile.ct.ws/send_email.php', {
+            // เปลี่ยน URL จาก send_email.php เป็น http://zero-profile-php.ct.ws/
+            const response = await fetch('http://zero-profile-php.ct.ws/', {
                 method: 'POST',
                 body: formData
             });
@@ -92,14 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 contactForm.reset();
             } else {
-                Swal.fire({
-                    title: 'Message Failed',
-                    text: result.message,
-                    icon: 'error',
-                    confirmButtonColor: '#000000',
-                    background: '#ffffff',
-                    iconColor: '#666666'
-                });
+                throw new Error('Failed to send message');
             }
         } catch (error) {
             Swal.fire({
@@ -122,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
             if (scrollY >= (sectionTop - 300)) {
                 current = section.getAttribute('id');
             }
