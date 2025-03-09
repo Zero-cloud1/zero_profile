@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     try {
       // เปลี่ยน URL ให้เป็นแบบ Absolute ของ PHP Server
-      const response = await fetch('https://yourserver.com/send_email.php', {
+      const response = await fetch('https://zero-profile-php.ct.ws/send_email.php', {
         method: 'POST',
         body: formData
       });
