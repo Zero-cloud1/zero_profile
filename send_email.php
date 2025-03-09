@@ -1,54 +1,49 @@
 <?php
-// Set headers to handle AJAX request
+// กำหนด header สำหรับส่ง response แบบ JSON
 header('Content-Type: application/json');
 
-// Enable error reporting for debugging
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-// Process only POST requests
+// ตรวจสอบว่าเป็น POST request หรือไม่
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data and sanitize
+    // รับและ sanitize ข้อมูลจาก form
     $name = isset($_POST['name']) ? htmlspecialchars(trim($_POST['name'])) : '';
     $email = isset($_POST['email']) ? filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
     $message = isset($_POST['message']) ? htmlspecialchars(trim($_POST['message'])) : '';
     
-    // Validate inputs
+    // ตรวจสอบข้อมูลให้ครบถ้วนและถูกต้อง
     if (empty($name) || empty($email) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode(['status' => 'error', 'message' => 'Please fill all fields with valid information']);
+        echo json_encode(['status' => 'error', 'message' => 'กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง']);
         exit;
     }
     
-    // Telegram configuration
-    $telegramBotToken = '7720898700:AAGkt8cll9sQ-AtnYew2A7s9VyQKM_KHpJQ';
-    $telegramChatId = '420650653';
+    // กำหนดค่า Telegram Bot Token และ Chat ID
+    $telegramBotToken = '7720898700:AAGkt8cll9sQ-AtnYew2A7s9VyQKM_KHpJQ'; // เปลี่ยนเป็น Bot Token ของคุณ
+    $telegramChatId = '6009494714'; // สำหรับกลุ่ม ให้ใส่เครื่องหมายลบหน้าหมายเลข เช่น "-6009494714"
     
-    // Format message for Telegram
+    // จัดรูปแบบข้อความที่จะส่งไปยัง Telegram
     $telegramMessage = "New Contact Form Message\n\n";
     $telegramMessage .= "Name: " . $name . "\n";
     $telegramMessage .= "Email: " . $email . "\n";
     $telegramMessage .= "Message:\n" . $message;
     
-    // Send to Telegram
+    // ส่งข้อความไปยัง Telegram
     $success = sendToTelegram($telegramBotToken, $telegramChatId, $telegramMessage);
     
     if ($success) {
-        echo json_encode(['status' => 'success', 'message' => 'Message sent successfully']);
+        echo json_encode(['status' => 'success', 'message' => 'ส่งข้อความเรียบร้อยแล้ว']);
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'Failed to send message. Please try again later.']);
+        echo json_encode(['status' => 'error', 'message' => 'ส่งข้อความไม่สำเร็จ กรุณาลองใหม่อีกครั้ง']);
     }
-    exit;
+} else {
+    // ไม่ใช่ POST request
+    echo json_encode(['status' => 'error', 'message' => 'รูปแบบการร้องขอไม่ถูกต้อง']);
 }
 
-// Not a POST request
-echo json_encode(['status' => 'error', 'message' => 'Invalid request method']);
-
 /**
- * Function to send message to Telegram
+ * ฟังก์ชันส่งข้อความไปยัง Telegram
  * @param string $botToken Telegram Bot Token
  * @param string $chatId Telegram Chat ID
- * @param string $message Message to send
- * @return bool Success status
+ * @param string $message ข้อความที่จะส่ง
+ * @return bool สถานะการส่งข้อความ
  */
 function sendToTelegram($botToken, $chatId, $message) {
     $url = "https://api.telegram.org/bot{$botToken}/sendMessage";
@@ -56,18 +51,20 @@ function sendToTelegram($botToken, $chatId, $message) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // ปิดการตรวจสอบ SSL (ปรับตามความเหมาะสมในเซิร์ฟเวอร์จริง)
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
         'chat_id' => $chatId,
-        'text' => $message
+        'text'    => $message
     ]));
-    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
     
     $result = curl_exec($ch);
     
-    if(curl_errno($ch)) {
-        error_log('Curl error: ' . curl_error($ch));
+    // ตรวจสอบข้อผิดพลาดจาก cURL
+    if ($result === false) {
+        $error = curl_error($ch);
+        error_log("cURL error: " . $error);
         curl_close($ch);
         return false;
     }
@@ -75,8 +72,8 @@ function sendToTelegram($botToken, $chatId, $message) {
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
     
-    if($httpCode !== 200) {
-        error_log('Telegram API error. HTTP code: ' . $httpCode . ', Response: ' . $result);
+    if ($httpCode !== 200) {
+        error_log("Telegram API responded with HTTP Code: " . $httpCode . " Response: " . $result);
         return false;
     }
     
