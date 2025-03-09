@@ -11,16 +11,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // ตรวจสอบข้อมูลให้ครบถ้วนและถูกต้อง
     if (empty($name) || empty($email) || empty($message) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode(['status' => 'error', 'message' => 'กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง']);
+        echo json_encode(
+            ['status' => 'error', 'message' => 'กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง'],
+            JSON_UNESCAPED_UNICODE
+        );
         exit;
     }
     
     // กำหนดค่า Telegram Bot Token และ Chat ID
-    $telegramBotToken = '7720898700:AAGkt8cll9sQ-AtnYew2A7s9VyQKM_KHpJQ'; // เปลี่ยนเป็น Bot Token ของคุณ
-    $telegramChatId = '6009494714'; // สำหรับกลุ่ม ให้ใส่เครื่องหมายลบหน้าหมายเลข เช่น "-6009494714"
+    // (แก้ให้ถูกต้องตามของคุณเอง)
+    $telegramBotToken = '7720898700:AAGkt8cll9sQ-AtnYew2A7s9VyQKM_KHpJQ'; 
+    $telegramChatId   = '6009494714'; // 
     
     // จัดรูปแบบข้อความที่จะส่งไปยัง Telegram
-    $telegramMessage = "New Contact Form Message\n\n";
+    $telegramMessage  = "New Contact Form Message\n\n";
     $telegramMessage .= "Name: " . $name . "\n";
     $telegramMessage .= "Email: " . $email . "\n";
     $telegramMessage .= "Message:\n" . $message;
@@ -29,13 +33,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $success = sendToTelegram($telegramBotToken, $telegramChatId, $telegramMessage);
     
     if ($success) {
-        echo json_encode(['status' => 'success', 'message' => 'ส่งข้อความเรียบร้อยแล้ว']);
+        echo json_encode(
+            ['status' => 'success', 'message' => 'ส่งข้อความเรียบร้อยแล้ว'],
+            JSON_UNESCAPED_UNICODE
+        );
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'ส่งข้อความไม่สำเร็จ กรุณาลองใหม่อีกครั้ง']);
+        echo json_encode(
+            ['status' => 'error', 'message' => 'ส่งข้อความไม่สำเร็จ กรุณาลองใหม่อีกครั้ง'],
+            JSON_UNESCAPED_UNICODE
+        );
     }
 } else {
     // ไม่ใช่ POST request
-    echo json_encode(['status' => 'error', 'message' => 'รูปแบบการร้องขอไม่ถูกต้อง']);
+    echo json_encode(
+        ['status' => 'error', 'message' => 'รูปแบบการร้องขอไม่ถูกต้อง'],
+        JSON_UNESCAPED_UNICODE
+    );
 }
 
 /**
@@ -51,7 +64,7 @@ function sendToTelegram($botToken, $chatId, $message) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    // ปิดการตรวจสอบ SSL (ปรับตามความเหมาะสมในเซิร์ฟเวอร์จริง)
+    // ปิดการตรวจสอบ SSL (ในเซิร์ฟเวอร์จริง ควรตั้งเป็น true)
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
@@ -61,7 +74,6 @@ function sendToTelegram($botToken, $chatId, $message) {
     
     $result = curl_exec($ch);
     
-    // ตรวจสอบข้อผิดพลาดจาก cURL
     if ($result === false) {
         $error = curl_error($ch);
         error_log("cURL error: " . $error);
