@@ -1,200 +1,199 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZERO | PROFILE</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" href="icon.png">
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: 'Kanit', sans-serif;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZERO | PROFILE</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="icon.png">
+  
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+    }
+  </style>
 </head>
-<body> 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">P r o f i l e</div>
-            <div class="nav-links">
-                <a href="#home" class="nav-link active"><b>หน้าหลัก</b></a>
-                <a href="#about" class="nav-link"><b>เกี่ยวกับ</b></a>
-                <a href="#skills" class="nav-link"><b>ทักษะ</b></a>
-                <a href="#contact" class="nav-link"><b>ช่องทางติดต่อ</b></a>
-            </div>
-            <button id="theme-toggle" class="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </button>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">P r o f i l e</div>
+      <div class="nav-links">
+        <a href="#home" class="nav-link active"><b>หน้าหลัก</b></a>
+        <a href="#about" class="nav-link"><b>เกี่ยวกับ</b></a>
+        <a href="#skills" class="nav-link"><b>ทักษะ</b></a>
+        <a href="#contact" class="nav-link"><b>ช่องทางติดต่อ</b></a>
+      </div>
+      <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="profile-container">
+          <div class="profile-image">
+            <img src="logo.png" alt="Profile Picture">
+          </div>
         </div>
-    </nav>
-    
-    <!-- Hero -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="profile-container">
-                    <div class="profile-image">
-                        <img src="logo.png" alt="Profile Picture">
-                    </div>
-                </div>
-                <h1>Hello, I'm <span class="highlight">Phoopha</span></h1>
-                <p class="subtitle">นี้คือเว็บแนะนำตัวนะครับ</p>
-                <div class="scroll-down">
-                    <span>เลื่อนลงไปเลย!!</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-            </div>
+        <h1>Hello, I'm <span class="highlight">Phoopha</span></h1>
+        <p class="subtitle">นี้คือเว็บแนะนำตัวนะครับ</p>
+        <div class="scroll-down">
+          <span>เลื่อนลงไปเลย!!</span>
+          <i class="fas fa-chevron-down"></i>
         </div>
-    </section>
-    
-    <!-- About -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">เกี่ยวกับผม</h2>
-            <div class="about-content">
-                <p>สวัสดีครับผมชื่อ ภูผา นะครับตอนนี้อายุ 19 ปี เว็บนี้สร้างเพื่อเป็นหน้า Bio ของผมเองครับและรวมช่องทางติดต่อ</p>
-                <h3><u>งานอดิเรก</u></h3>
-                <div class="hobby-grid">
-                    <div class="hobby-card">
-                        <i class="fas fa-gamepad"></i>
-                        <h4>เล่นเกม</h4>
-                    </div>
-                    <div class="hobby-card">
-                        <i class="fas fa-camera"></i>
-                        <h4>ถ่ายรูป</h4>
-                    </div>
-                    <div class="hobby-card">
-                        <i class="fas fa-music"></i>
-                        <h4>ฟังเพลง</h4>
-                    </div>
-                    <div class="hobby-card">
-                        <i class="fas fa-code"></i>
-                        <h4>เขียนโค้ด</h4>
-                    </div>
-                    <div class="hobby-card">
-                        <i class="fas fa-edit"></i>
-                        <h4>ตัดต่อวิดีโอ</h4>
-                    </div>
-                    <div class="hobby-card">
-                        <i class="fas fa-bed"></i>
-                        <h4>นอน</h4>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">เกี่ยวกับผม</h2>
+      <div class="about-content">
+        <p>สวัสดีครับผมชื่อ ภูผา นะครับตอนนี้อายุ 19 ปี เว็บนี้สร้างเพื่อเป็นหน้า Bio ของผมเองครับและรวมช่องทางติดต่อ</p>
+        <h3><u>งานอดิเรก</u></h3>
+        <div class="hobby-grid">
+          <div class="hobby-card">
+            <i class="fas fa-gamepad"></i>
+            <h4>เล่นเกม</h4>
+          </div>
+          <div class="hobby-card">
+            <i class="fas fa-camera"></i>
+            <h4>ถ่ายรูป</h4>
+          </div>
+          <div class="hobby-card">
+            <i class="fas fa-music"></i>
+            <h4>ฟังเพลง</h4>
+          </div>
+          <div class="hobby-card">
+            <i class="fas fa-code"></i>
+            <h4>เขียนโค้ด</h4>
+          </div>
+          <div class="hobby-card">
+            <i class="fas fa-edit"></i>
+            <h4>ตัดต่อวิดีโอ</h4>
+          </div>
+          <div class="hobby-card">
+            <i class="fas fa-bed"></i>
+            <h4>นอน</h4>
+          </div>
         </div>
-    </section>
-    
-    <!-- Skills -->
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title">My Skills</h2>
-            <div class="skills-container">
-                <div class="skill">
-                    <div class="skill-info">
-                        <h4>Adobe Premiere Pro</h4>
-                        <span>90%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="progress" data-percent="90"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <div class="skill-info">
-                        <h4>Adobe Photoshop</h4>
-                        <span>85%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="progress" data-percent="85"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <div class="skill-info">
-                        <h4>Adobe illustrator</h4>
-                        <span>75%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="progress" data-percent="75"></div>
-                    </div>
-                </div>
-                <div class="skill">
-                    <div class="skill-info">
-                        <h4>UI/UX Design</h4>
-                        <span>50%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="progress" data-percent="50"></div>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title">My Skills</h2>
+      <div class="skills-container">
+        <div class="skill">
+          <div class="skill-info">
+            <h4>Adobe Premiere Pro</h4>
+            <span>90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="progress" data-percent="90"></div>
+          </div>
         </div>
-    </section>
-    
-    <!-- Contact -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">ช่องทางติดต่อ</h2>
-            <div class="contact-content">
-                <div class="social-links">
-                    <a href="https://www.facebook.com/thanaphat.samersamai.9/" class="social-link">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/p.phoopha1?igsh=MXBjYXA3b2IwMWgxcg%3D%3D&utm_source=qr" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-                
-                <!-- ฟอร์มส่งข้อความ -->
-                <!-- เปลี่ยน action จาก send_email.php เป็น http://zero-profile-php.ct.ws/ -->
-                <form id="contact-form" class="contact-form" action="http://zero-profile-php.ct.ws/" method="POST">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
+        <div class="skill">
+          <div class="skill-info">
+            <h4>Adobe Photoshop</h4>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="progress" data-percent="85"></div>
+          </div>
         </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo"><img src="logotame.png" alt="" class="brand-img"></div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2024 Thanaphat. All rights reserved.</p>
-            </div>
+        <div class="skill">
+          <div class="skill-info">
+            <h4>Adobe Illustrator</h4>
+            <span>75%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="progress" data-percent="75"></div>
+          </div>
         </div>
-    </footer>
-    
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+        <div class="skill">
+          <div class="skill-info">
+            <h4>UI/UX Design</h4>
+            <span>50%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="progress" data-percent="50"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">ช่องทางติดต่อ</h2>
+      <div class="contact-content">
+        <div class="social-links">
+          <a href="https://www.facebook.com/thanaphat.samersamai.9/" class="social-link">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/p.phoopha1?igsh=MXBjYXA3b2IwMWgxcg%3D%3D&utm_source=qr" class="social-link">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        
+        <!-- ฟอร์มส่งข้อความ (ไม่กำหนด action เพราะจะส่งผ่าน JS) -->
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo"><img src="logotame.png" alt="" class="brand-img"></div>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2024 Thanaphat. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
