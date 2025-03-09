@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="icon.png">
     <title>ZERO | PROFILE</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-    <style>
-        body{font-family: Kanit;
-        }</style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
     
+    <!-- Favicon -->
+    <link rel="icon" href="icon.png">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+        }
+    </style>
+</head>
+<body> 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -30,7 +39,7 @@
             </button>
         </div>
     </nav>
-
+    
     <!-- Hero -->
     <section id="home" class="hero">
         <div class="container">
@@ -49,14 +58,13 @@
             </div>
         </div>
     </section>
-
+    
     <!-- About -->
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">เกี่ยวกับผม</h2>
             <div class="about-content">
                 <p>สวัสดีครับผมชื่อ ภูผา นะครับตอนนี้อายุ 19 ปี เว็บนี้สร้างเพื่อเป็นหน้า Bio ของผมเองครับและรวมช่องทางติดต่อ</p>
-                
                 <h3><u>งานอดิเรก</u></h3>
                 <div class="hobby-grid">
                     <div class="hobby-card">
@@ -87,7 +95,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Skills -->
     <section id="skills" class="section">
         <div class="container">
@@ -113,7 +121,7 @@
                 </div>
                 <div class="skill">
                     <div class="skill-info">
-                        <h4>Adobe illustrator  </h4>
+                        <h4>Adobe illustrator</h4>
                         <span>75%</span>
                     </div>
                     <div class="skill-bar">
@@ -132,8 +140,8 @@
             </div>
         </div>
     </section>
-
-    <!-- Contact Section -->
+    
+    <!-- Contact -->
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">ช่องทางติดต่อ</h2>
@@ -147,7 +155,9 @@
                     </a>
                 </div>
                 
-                <form id="contact-form" class="contact-form">
+                <!-- ฟอร์มส่งข้อความ -->
+                <!-- เปลี่ยน action ให้ชี้ไปที่ PHP บน InfinityFree (HTTPS) -->
+                <form id="contact-form" class="contact-form" action="https://zero-profile.ct.ws/send_email.php" method="POST">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Your Name" required>
                     </div>
@@ -158,15 +168,14 @@
                         <textarea name="message" placeholder="Your Message" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">
-                        <span>Send Message (ปิดปรับปรุง)</span>
+                        <span>Send Message</span>
                         <i class="fas fa-paper-plane"></i>
-                        <form id="contact-form" class="contact-form" action="send_email.php" method="POST"></form>
                     </button>
                 </form>
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -184,7 +193,8 @@
             </div>
         </div>
     </footer>
-
+    
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
