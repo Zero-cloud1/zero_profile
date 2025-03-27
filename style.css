@@ -42,12 +42,12 @@ body {
 }
 
 .container {
-    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
+/* Navigation */
 .navbar {
     position: fixed;
     top: 0;
@@ -64,20 +64,22 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary);
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
 }
 
 .nav-links {
     display: flex;
     gap: 2rem;
-    flex-wrap: wrap;
-    align-items: center;
 }
 
 .nav-link {
@@ -126,10 +128,11 @@ body {
     transform: rotate(30deg);
 }
 
+/* Hero Section */
 .hero {
-    display: grid;
-    place-items: center;
     height: 100vh;
+    display: flex;
+    align-items: center;
     padding-top: 80px;
 }
 
@@ -139,8 +142,8 @@ body {
 
 .profile-container {
     position: relative;
-    width: min(200px, 50%);
-    aspect-ratio: 1 / 1;
+    width: 200px;
+    height: 200px;
     margin: 0 auto 2rem;
 }
 
@@ -172,8 +175,13 @@ body {
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3.2rem;
+    margin-bottom: -1rem;
+}
+
+.hero h2 {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
 }
 
 .highlight {
@@ -208,6 +216,7 @@ body {
     }
 }
 
+/* Section Styles */
 .section {
     padding: 6rem 0;
 }
@@ -230,6 +239,7 @@ body {
     background-color: var(--primary);
 }
 
+/* About Section */
 .about-content {
     max-width: 800px;
     margin: 0 auto;
@@ -266,6 +276,7 @@ body {
     color: var(--primary);
 }
 
+/* Skills Section */
 .skills-container {
     max-width: 800px;
     margin: 0 auto;
@@ -295,6 +306,7 @@ body {
     transition: width 1.5s ease-in-out;
 }
 
+/* Contact Section */
 .contact-content {
     max-width: 600px;
     margin: 0 auto;
@@ -383,36 +395,79 @@ textarea {
     transform: translateY(-1px);
 }
 
-
+/* Footer */
 .footer {
     background-color: var(--card);
     padding: 3rem 0;
     margin-top: 3rem;
+    width: 100%;
+    position: relative;
+    left: 0;
+    right: 0;
+    box-shadow: 0 -5px 15px var(--shadow);
 }
 
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+.footer .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 90%;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
 .footer-logo {
-    font-size: 1.5rem;
+    font-size: 3rem;
     font-weight: 700;
     color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.footer-logo img {
+    height: 150px;
+    width: auto;
 }
 
 .footer-links {
     display: flex;
     gap: 2rem;
-    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
 }
 
 .footer-links a {
     color: var(--text);
     text-decoration: none;
     transition: var(--transition);
+    padding: 0.5rem;
+    position: relative;
+}
+
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition);
+}
+
+.footer-links a:hover::after {
+    width: 100%;
 }
 
 .footer-links a:hover {
@@ -423,16 +478,23 @@ textarea {
     text-align: center;
     color: var(--accent);
     font-size: 0.9rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    width: 100%;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
         padding: 1rem 0;
     }
     
+    .logo img {
+        height: 45px;
+    }
+    
     .nav-links {
-        gap: 1rem;
-        justify-content: center;
+        gap: 1.5rem;
     }
     
     .hero h1 {
@@ -442,6 +504,29 @@ textarea {
     .section-title {
         font-size: 2rem;
     }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .footer-logo {
+        font-size: 2.8rem;
+    }
+    
+    .footer-logo img {
+        height: 130px;
+    }
+    
+    .footer-links {
+        gap: 1.5rem;
+        justify-content: center;
+    }
+    
+    .footer-links a {
+        padding: 0.7rem;
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -449,8 +534,16 @@ textarea {
         padding: 0 1rem;
     }
     
+    .logo {
+        font-size: 1.6rem;
+    }
+    
+    .logo img {
+        height: 40px;
+    }
+    
     .nav-links {
-        gap: 0.5rem;
+        gap: 1.2rem;
     }
     
     .hobby-grid {
@@ -459,5 +552,55 @@ textarea {
     
     .social-links {
         gap: 1rem;
+    }
+    
+    .footer-logo {
+        font-size: 2.5rem;
+    }
+    
+    .footer-logo img {
+        height: 110px;
+    }
+    
+    .footer-links {
+        gap: 1.2rem;
+    }
+    
+    .footer-links a {
+        padding: 0.8rem;
+        margin: 0 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .logo img {
+        height: 35px;
+    }
+    
+    .footer-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .footer-links a {
+        padding: 0.8rem 0.5rem;
+    }
+    
+    .footer-logo {
+        font-size: 2.2rem;
+    }
+    
+    .footer-logo img {
+        height: 90px;
     }
 }
