@@ -25,11 +25,33 @@
                 <a href="#skills" class="nav-link"><b>ทักษะ</b></a>
                 <a href="#contact" class="nav-link"><b>ช่องทางติดต่อ</b></a>
             </div>
-            <button id="theme-toggle" class="theme-toggle">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
                 <i class="fas fa-moon"></i>
+            </button>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-links">
+            <a href="#home" class="mobile-nav-link active">หน้าหลัก</a>
+            <a href="#about" class="mobile-nav-link">เกี่ยวกับ</a>
+            <a href="#skills" class="mobile-nav-link">ทักษะ</a>
+            <a href="#contact" class="mobile-nav-link">ช่องทางติดต่อ</a>
+            <div class="mobile-theme-toggle">
+                <button id="mobile-theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <span>เปลี่ยนธีม</span>
+            </div>
+        </div>
+        <button class="mobile-nav-close" aria-label="Close mobile menu">×</button>
+    </div>
 
     <!-- Hero -->
     <section id="home" class="hero">
@@ -57,13 +79,7 @@
             <h2 class="section-title">เกี่ยวกับผม</h2>
             <div class="about-content">
                 <p>สวัสดีครับผมชื่อ ภูผา นะครับ เว็บนี้สร้างเพื่อเป็นหน้า Bio ของผมเองครับและรวมช่องทางติดต่อ</p>
-                <br>
-
-
-
-
-
-            </br>
+                <br></br>
                 <h3><u>งานอดิเรก</u></h3>
                 <div class="hobby-grid">
                     <div class="hobby-card">
@@ -169,7 +185,6 @@
                     <button type="submit" class="submit-btn">
                         <span>Send Message (ปิดปรับปรุง)</span>
                         <i class="fas fa-paper-plane"></i>
-                        <form id="contact-form" class="contact-form" action="send_email.php" method="POST"></form>
                     </button>
                 </form>
             </div>
