@@ -506,17 +506,7 @@ textarea {
     position: relative;
 }
 
-.copyright::before {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 1px;
-    background-color: var(--primary);
-    opacity: 0.2;
-}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
