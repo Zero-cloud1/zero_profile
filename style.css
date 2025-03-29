@@ -26,6 +26,7 @@ body.dark-mode {
     --nav-bg: #121212;
     --nav-text: #ffffff;
 }
+
 /* Mobile Theme Toggle */
 .mobile-theme-toggle {
     display: flex;
@@ -71,19 +72,13 @@ body.dark-mode {
     padding: 0;
     box-sizing: border-box;
 }
-/* ... existing code ... */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Kanit', sans-serif;
     background-color: var(--background);
     color: var(--text);
     line-height: 1.6;
@@ -91,7 +86,7 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
@@ -134,6 +129,7 @@ body {
     color: var(--primary);
     white-space: nowrap;
     margin-right: 1.5rem;
+    margin-left: 1rem;
 }
 
 .logo img {
@@ -197,6 +193,7 @@ body {
     border: 1px solid var(--border);
     box-shadow: 0 2px 5px var(--shadow);
     margin-left: 1rem;
+    margin-right: 1rem;
     flex-shrink: 0;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
@@ -224,6 +221,7 @@ body {
     padding: 0;
     z-index: 1100;
     margin-left: auto;
+    margin-right: 1.2rem;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -264,6 +262,7 @@ body {
     transition: transform 0.4s ease-in-out;
     opacity: 0;
     visibility: hidden;
+    padding: 0 1.5rem;
 }
 
 .mobile-nav.active {
@@ -276,17 +275,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 2.2rem;
+    width: 100%;
+    max-width: 300px;
 }
 
 .mobile-nav-link {
     color: var(--text);
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 500;
     position: relative;
-    padding: 0.5rem 0;
+    padding: 0.6rem 0;
     transition: var(--transition);
+    width: 100%;
+    text-align: center;
 }
 
 .mobile-nav-link::after {
@@ -432,11 +435,18 @@ body {
 .about-content {
     max-width: 800px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .about-content p {
     margin-bottom: 2rem;
     font-size: 1.1rem;
+    text-align: center;
+}
+
+.about-content h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
 .hobby-grid {
@@ -545,7 +555,7 @@ input, textarea {
     border: 1px solid var(--border);
     border-radius: 5px;
     color: var(--text);
-    font-family: inherit;
+    font-family: 'Kanit', sans-serif;
     transition: var(--transition);
 }
 
@@ -573,6 +583,7 @@ textarea {
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
+    font-family: 'Kanit', sans-serif;
 }
 
 .submit-btn:hover {
@@ -628,7 +639,7 @@ textarea {
 }
 
 .footer-logo img {
-    height: 30px;
+    height: 100px;
     width: auto;
     object-fit: contain;
 }
@@ -675,10 +686,8 @@ textarea {
     font-size: 0.9rem;
     padding-top: 1.5rem;
     position: relative;
-    width: 110%;
+    width: 100%;
 }
-
-
 
 .copyright::after {
     content: '';
@@ -737,11 +746,15 @@ body.menu-open {
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        padding: 1rem 0;
+        padding: 1.2rem 0;
     }
     
     .navbar.scrolled {
-        padding: 0.6rem 0;
+        padding: 0.8rem 0;
+    }
+    
+    .logo {
+        margin-left: 1.2rem;
     }
     
     .logo img {
@@ -758,7 +771,7 @@ body.menu-open {
     
     .mobile-menu-btn {
         display: flex;
-        margin-right: 1rem;
+        margin-right: 1.5rem;
     }
     
     .hero h1 {
@@ -800,11 +813,12 @@ body.menu-open {
 
 @media (max-width: 576px) {
     .container {
-        padding: 0 1rem;
+        padding: 0 1.2rem;
     }
     
     .logo {
         font-size: 1.6rem;
+        margin-left: 0.8rem;
         margin-right: 1rem;
     }
     
@@ -822,6 +836,10 @@ body.menu-open {
         width: 40px;
         height: 40px;
         margin-left: 0.8rem;
+    }
+    
+    .mobile-menu-btn {
+        margin-right: 1.2rem;
     }
     
     .hobby-grid {
@@ -857,11 +875,12 @@ body.menu-open {
 
 @media (max-width: 480px) {
     .navbar .container {
-        padding: 0 0.5rem;
+        padding: 0 0.8rem;
     }
     
     .logo {
         font-size: 1.5rem;
+        margin-left: 0.5rem;
         margin-right: 0.8rem;
     }
     
@@ -885,7 +904,7 @@ body.menu-open {
     .mobile-menu-btn {
         width: 25px;
         height: 18px;
-        margin-right: 0.5rem;
+        margin-right: 1rem;
     }
     
     .mobile-menu-btn.active span:nth-child(1) {
@@ -911,11 +930,11 @@ body.menu-open {
     }
     
     .footer-logo {
-        font-size: 1rem;
+        font-size: 2rem;
     }
     
     .footer-logo img {
-        height: 50px;
+        height: 80px;
     }
 }
 
