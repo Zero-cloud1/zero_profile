@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZERO GAME</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="stylegame.css">
+    <meta name="description" content="ZERO GAME - รวมเกมสนุกๆ ที่เล่นได้ทั้งบนมือถือและคอมพิวเตอร์">
+    <!-- เพิ่ม favicon -->
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <!-- เพิ่ม script เพื่อตรวจสอบและแก้ไข hash เมื่อโหลดหน้า -->
+    <script>
+        window.onload = function() {
+            // ถ้ามี hash แต่ไม่ใช่ #top ให้เลื่อนไปที่ส่วนนั้น
+            // ถ้าไม่มี hash หรือเป็น # เปล่าๆ ให้เลื่อนไปที่ด้านบนสุด
+            if (window.location.hash === '' || window.location.hash === '#') {
+                window.scrollTo(0, 0);
+                history.replaceState(null, null, '#top');
+            }
+        };
+    </script>
+</head>
+<body id="top">
+    <!-- Desktop Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#top">
+                    <i class="fas fa-gamepad"></i> ZERO GAME
+                </a>
+            </div>
+            <nav class="desktop-nav">
+                <ul class="menu">
+                    <li><a href="#top">หน้าหลัก</a></li>
+                    <li><a href="#snake">เกมงู</a></li>
+                    <li><a href="#memory">เกมจับคู่</a></li>
+                    <li><a href="#tictactoe">เกม XO</a></li>
+                    <li><a href="#rps">เป่ายิ้งฉุบ</a></li>
+                    <li><a href="#number">เกมทายตัวเลข</a></li>
+                    <li><a href="#word">เกมสลับตัวอักษร</a></li>
+                </ul>
+            </nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="สลับธีม">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="เปิดเมนู">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu (single instance) -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i> ZERO GAME
+            </div>
+            <button class="close-menu" id="close-menu" aria-label="ปิดเมนู">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <nav class="mobile-nav-links">
+            <a href="#top" class="mobile-nav-link">หน้าหลัก</a>
+            <a href="#snake" class="mobile-nav-link">เกมงู</a>
+            <a href="#memory" class="mobile-nav-link">เกมจับคู่</a>
+            <a href="#tictactoe" class="mobile-nav-link">เกม XO</a>
+            <a href="#rps" class="mobile-nav-link">เป่ายิ้งฉุบ</a>
+            <a href="#number" class="mobile-nav-link">เกมทายตัวเลข</a>
+            <a href="#word" class="mobile-nav-link">เกมสลับตัวอักษร</a>
+            
+            <!-- เปลี่ยนโครงสร้างปุ่มเปลี่ยนธีมให้เป็นลิงก์เหมือนเมนูอื่นๆ -->
+            <a href="javascript:void(0);" class="mobile-nav-link" id="mobile-theme-toggle">
+                <i class="fas fa-moon"></i>
+                <span>เปลี่ยนธีม</span>
+            </a>
+        </nav>
+    </div>
+    <!-- Overlay for Mobile Menu -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="featured-game">
+                <img src="background.gif" alt="Featured Game" style="width: 100%; height: auto;">
+                <div class="featured-game-content">
+                    <h2 class="featured-game-title">ZERO GAME : รวมเกมสนุกๆ</h2>
+                    <p class="featured-game-description">เล่นเกมสนุกๆ ได้ทั้งบนมือถือและคอมพิวเตอร์ ไม่ต้องติดตั้งแอพ เล่นได้ทันที!</p>
+                    <a href="#games-collection" class="play-button">เลือกเกม</a>
+                </div>
+            </div>
+
+            <h2 class="section-title" id="games-collection">เกมยอดนิยม</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <img src="pid.png" alt="Snake Game" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">เกมงู</h3>
+                        <p class="game-description">เกมงูคลาสสิกที่ทุกคนรู้จัก ควบคุมงูให้กินอาหารและเติบโตขึ้น</p>
+                        <a href="#snake" class="play-button">เล่นเลย</a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="pid.png" alt="Memory Game" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">เกมจับคู่</h3>
+                        <p class="game-description">ทดสอบความจำของคุณด้วยเกมจับคู่ภาพเหมือน</p>
+                        <a href="#memory" class="play-button">เล่นเลย</a>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <img src="pid.png" alt="Tic Tac Toe Game" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">เกม XO</h3>
+                        <p class="game-description">เกม XO คลาสสิก เล่นกับเพื่อนหรือผลัดกันเล่น</p>
+                        <a href="#tictactoe" class="play-button">เล่นเลย</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="pid.png" alt="Rock Paper Scissors Game" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">เป่ายิ้งฉุบ</h3>
+                        <p class="game-description">เกมเป่ายิ้งฉุบคลาสสิก เล่นกับคอมพิวเตอร์</p>
+                        <a href="#rps" class="play-button">เล่นเลย</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="pid.png" alt="Number Guessing Game" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">เกมทายตัวเลข</h3>
+                        <p class="game-description">ทายตัวเลขลับที่คอมพิวเตอร์เลือกไว้ให้ถูกต้อง</p>
+                        <a href="#number" class="play-button">เล่นเลย</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="pid.png" alt="Word Scramble Game" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">เกมสลับตัวอักษร</h3>
+                        <p class="game-description">ทายคำศัพท์จากตัวอักษรที่สลับตำแหน่ง</p>
+                        <a href="#word" class="play-button">เล่นเลย</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Snake Game -->
+            <div class="game-area" id="snake">
+                <h2 class="section-title">เกมงู</h2>
+                <div class="game-container">
+                    <div class="game-instructions">
+                        <h3>วิธีการเล่น</h3>
+                        <p>ใช้ปุ่มลูกศรเพื่อควบคุมทิศทางของงู:</p>
+                        <ul>
+                            <li>↑ = เลื่อนขึ้น</li>
+                            <li>↓ = เลื่อนลง</li>
+                            <li>← = เลื่อนซ้าย</li>
+                            <li>→ = เลื่อนขวา</li>
+                        </ul>
+                        <p>กินอาหาร (จุดสีแดง) เพื่อเพิ่มความยาวและคะแนน ระวังอย่าชนกับตัวเองหรือขอบ!</p>
+                    </div>
+                    
+                    <canvas id="snake-game" width="400" height="400"></canvas>
+                    <div class="touch-controls">
+                        <button class="direction-btn up" id="up-btn" aria-label="เลื่อนขึ้น"><i class="fas fa-arrow-up"></i></button>
+                        <button class="direction-btn left" id="left-btn" aria-label="เลื่อนซ้าย"><i class="fas fa-arrow-left"></i></button>
+                        <button class="direction-btn right" id="right-btn" aria-label="เลื่อนขวา"><i class="fas fa-arrow-right"></i></button>
+                        <button class="direction-btn down" id="down-btn" aria-label="เลื่อนลง"><i class="fas fa-arrow-down"></i></button>
+                    </div>
+                    <div class="game-controls">
+                        <button class="control-button" id="start-snake">เริ่มเกม</button>
+                        <button class="control-button" id="pause-snake">หยุดชั่วคราว</button>
+                        <button class="control-button" id="reset-snake">เริ่มใหม่</button>
+                    </div>
+                    <div class="game-score">
+                        คะแนน: <span id="snake-score">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory Game -->
+            <div class="game-area" id="memory">
+                <h2 class="section-title">เกมจับคู่</h2>
+                <div class="game-container">
+                    <div class="game-instructions">
+                        <h3>วิธีการเล่น</h3>
+                        <p>คลิกที่การ์ดเพื่อพลิกและจำตำแหน่งของภาพ:</p>
+                        <ul>
+                            <li>พลิกการ์ดครั้งละ 2 ใบ</li>
+                            <li>ถ้าภาพเหมือนกัน การ์ดจะเปิดค้างไว้</li>
+                            <li>ถ้าภาพไม่เหมือนกัน การ์ดจะพลิกกลับ</li>
+                            <li>เกมจบเมื่อจับคู่การ์ดได้ทั้งหมด</li>
+                        </ul>
+                        <p>พยายามจับคู่ให้ครบทั้งหมดด้วยจำนวนครั้งที่น้อยที่สุด!</p>
+                    </div>
+                    
+                    <div class="memory-game">
+                        <!-- Cards will be generated by JavaScript -->
+                    </div>
+                    <div class="game-controls">
+                        <button class="control-button" id="start-memory">เริ่มเกมใหม่</button>
+                    </div>
+                    <div class="game-score">
+                        จำนวนครั้งที่พลิก: <span id="memory-score">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tic Tac Toe Game (เกม XO) -->
+            <div class="game-area" id="tictactoe">
+                <h2 class="section-title">เกม XO</h2>
+                <div class="game-container">
+                    <div class="game-instructions">
+                        <h3>วิธีการเล่น</h3>
+                        <p>เกม XO คลาสสิกที่เล่นบนตาราง 3x3:</p>
+                        <ul>
+                            <li>ผู้เล่นสองคนผลัดกันวาง X และ O</li>
+                            <li>ผู้เล่นที่สามารถเรียงเครื่องหมายของตนเองให้ครบ 3 ช่องในแนวตั้ง แนวนอน หรือแนวทแยงจะเป็นผู้ชนะ</li>
+                            <li>ถ้าไม่มีใครชนะและตารางเต็ม จะถือว่าเสมอกัน</li>
+                        </ul>
+                        <p>ผลัดกันเล่นกับเพื่อนหรือเล่นกับคอมพิวเตอร์!</p>
+                    </div>
+                    
+                    <div class="tictactoe-board">
+                        <div class="tictactoe-cell" data-index="0"></div>
+                        <div class="tictactoe-cell" data-index="1"></div>
+                        <div class="tictactoe-cell" data-index="2"></div>
+                        <div class="tictactoe-cell" data-index="3"></div>
+                        <div class="tictactoe-cell" data-index="4"></div>
+                        <div class="tictactoe-cell" data-index="5"></div>
+                        <div class="tictactoe-cell" data-index="6"></div>
+                        <div class="tictactoe-cell" data-index="7"></div>
+                        <div class="tictactoe-cell" data-index="8"></div>
+                    </div>
+                    
+                    <div id="tictactoe-status">เริ่มเกม: ตาของ X</div>
+                    
+                    <div class="game-controls">
+                        <button class="control-button" id="reset-tictactoe">เริ่มเกมใหม่</button>
+                        <button class="control-button" id="toggle-opponent">เล่นกับคอมพิวเตอร์</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rock Paper Scissors Game (เกมเป่ายิ้งฉุบ) -->
+            <div class="game-area" id="rps">
+                <h2 class="section-title">เกมเป่ายิ้งฉุบ</h2>
+                <div class="game-container">
+                    <div class="game-instructions">
+                        <h3>วิธีการเล่น</h3>
+                        <p>เลือกค้อน กระดาษ หรือกรรไกร เพื่อแข่งกับคอมพิวเตอร์:</p>
+                        <ul>
+                            <li>ค้อน ชนะ กรรไกร</li>
+                            <li>กรรไกร ชนะ กระดาษ</li>
+                            <li>กระดาษ ชนะ ค้อน</li>
+                        </ul>
+                        <p>ผู้เล่นที่ชนะ 5 รอบก่อนจะเป็นผู้ชนะ!</p>
+                    </div>
+                    
+                    <div class="rps-arena">
+                        <div class="rps-player">
+                            <h3>คุณ</h3>
+                            <div class="rps-choice player-choice">
+                                <i class="fas fa-question"></i>
+                            </div>
+                            <div class="rps-score">
+                                คะแนน: <span id="player-score">0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="rps-vs">
+                            <span>VS</span>
+                        </div>
+                        
+                        <div class="rps-computer">
+                            <h3>คอมพิวเตอร์</h3>
+                            <div class="rps-choice computer-choice">
+                                <i class="fas fa-question"></i>
+                            </div>
+                            <div class="rps-score">
+                                คะแนน: <span id="computer-score">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="rps-result" id="rps-result">เลือกค้อน กระดาษ หรือกรรไกร เพื่อเริ่มเกม</div>
+                    
+                    <div class="rps-options">
+                        <button class="rps-option" id="rock">
+                            <i class="fas fa-hand-rock"></i>
+                            <span>ค้อน</span>
+                        </button>
+                        <button class="rps-option" id="paper">
+                            <i class="fas fa-hand-paper"></i>
+                            <span>กระดาษ</span>
+                        </button>
+                        <button class="rps-option" id="scissors">
+                            <i class="fas fa-hand-scissors"></i>
+                            <span>กรรไกร</span>
+                        </button>
+                    </div>
+                    
+                    <div class="game-controls">
+                        <button class="control-button" id="reset-rps">เริ่มเกมใหม่</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Number Guessing Game -->
+            <div class="game-area" id="number">
+                <h2 class="section-title">เกมทายตัวเลข</h2>
+                <div class="game-container">
+                    <div class="game-instructions">
+                        <h3>วิธีการเล่น</h3>
+                        <p>ทายตัวเลขที่คอมพิวเตอร์สุ่มไว้:</p>
+                        <ul>
+                            <li>ทายตัวเลขระหว่าง 1-100</li>
+                            <li>ระบบจะบอกว่าตัวเลขที่คุณทายมากเกินไปหรือน้อยเกินไป</li>
+                            <li>พยายามทายให้ถูกด้วยจำนวนครั้งน้อยที่สุด</li>
+                            <li>กดปุ่ม "เริ่มใหม่" เพื่อเริ่มเกมใหม่</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="number-message">เริ่มเกมใหม่! ทายตัวเลข 1-100</div>
+                    <div class="number-input">
+                        <input type="number" id="guess-input" placeholder="ทายตัวเลข...">
+                        <button id="guess-btn">ทาย</button>
+                    </div>
+                    <div class="game-controls">
+                        <button id="reset-number" class="control-button">เริ่มใหม่</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word Scramble Game -->
+            <div class="game-area" id="word">
+                <h2 class="section-title">เกมสลับคำ</h2>
+                <div class="game-container">
+                    <div class="game-instructions">
+                        <h3>วิธีการเล่น</h3>
+                        <p>เรียงตัวอักษรที่สลับให้เป็นคำที่ถูกต้อง:</p>
+                        <ul>
+                            <li>เรียงตัวอักษรที่สลับให้เป็นคำที่ถูกต้อง</li>
+                            <li>ใช้คำใบ้เพื่อช่วยในการเดา</li>
+                            <li>กดปุ่ม "ข้าม" หากต้องการเปลี่ยนคำ</li>
+                            <li>กดปุ่ม "เริ่มใหม่" เพื่อเริ่มเกมใหม่และรีเซ็ตคะแนน</li>
+                            <li>พยายามทำคะแนนให้ได้มากที่สุด</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="word-display">คำสลับ</div>
+                    <div class="word-hint">คำใบ้: ...</div>
+                    <div class="word-input">
+                        <input type="text" id="word-guess" placeholder="พิมพ์คำตอบ...">
+                        <button id="word-submit">ตอบ</button>
+                    </div>
+                    <div class="word-message"></div>
+                    <div class="game-controls">
+                        <button id="word-skip" class="control-button">ข้าม</button>
+                        <button id="reset-word" class="control-button">เริ่มใหม่</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- เพิ่มปุ่มเลื่อนขึ้นด้านบน -->
+    <button class="scroll-top" id="scroll-top" aria-label="เลื่อนขึ้นด้านบน">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- เพิ่มการแจ้งเตือน -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-content">
+            <h3 class="notification-title">สำเร็จ!</h3>
+            <p class="notification-message">การดำเนินการเสร็จสมบูรณ์</p>
+        </div>
+        <button class="notification-close" id="notification-close" aria-label="ปิดการแจ้งเตือน">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#" class="footer-link">หน้าหลัก</a>
+                    <a href="#games-collection" class="footer-link">เกมทั้งหมด</a>
+                    <a href="#" class="footer-link">เกี่ยวกับเรา</a>
+                    <a href="#" class="footer-link">ติดต่อเรา</a>
+                </div>
+                <p class="copyright">&copy; 2025 ZERO GAME. สงวนลิขสิทธิ์ทั้งหมด.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scriptgame.js"></script>
+    <!-- แก้ไขสคริปต์ให้ทำงานได้ถูกต้อง -->
+    <script>
+        // รอให้หน้าเว็บโหลดเสร็จก่อน
+        document.addEventListener('DOMContentLoaded', function() {
+            // บันทึกตำแหน่ง scroll ก่อนรีเฟรช
+            const scrollPos = sessionStorage.getItem('scrollPos');
+            const currentHash = window.location.hash;
+            
+            // ถ้ามี hash ในลิงก์ ให้เลื่อนไปที่ส่วนนั้น
+            if (currentHash && currentHash !== '#' && currentHash !== '#top') {
+                const targetElement = document.querySelector(currentHash);
+                if (targetElement) {
+                    setTimeout(function() {
+                        targetElement.scrollIntoView({behavior: 'smooth'});
+                    }, 300);
+                }
+            } 
+            // ถ้าไม่มี hash แต่มีตำแหน่ง scroll ที่บันทึกไว้ ให้เลื่อนไปที่ตำแหน่งนั้น
+            else if (scrollPos) {
+                window.scrollTo(0, scrollPos);
+                sessionStorage.removeItem('scrollPos');
+            }
+            
+            // บันทึกตำแหน่ง scroll ก่อนรีเฟรช
+            window.addEventListener('beforeunload', function() {
+                sessionStorage.setItem('scrollPos', window.scrollY);
+            });
+            
+            // เพิ่ม event listener สำหรับลิงก์ภายในเพื่อให้การเลื่อนเป็นแบบ smooth
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({behavior: 'smooth'});
+                            // อัปเดต URL โดยไม่ต้องรีโหลดหน้า
+                            history.pushState(null, null, targetId);
+                        }
+                    }
+                });
+            });
+            
+            // เพิ่ม event listener สำหรับปุ่มเลื่อนขึ้นด้านบน
+            const scrollTopBtn = document.getElementById('scroll-top');
+            if (scrollTopBtn) {
+                scrollTopBtn.addEventListener('click', function() {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                });
+                
+                // แสดงปุ่มเมื่อเลื่อนลงมาเกิน 300px
+                window.addEventListener('scroll', function() {
+                    if (window.scrollY > 300) {
+                        scrollTopBtn.classList.add('show');
+                    } else {
+                        scrollTopBtn.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
