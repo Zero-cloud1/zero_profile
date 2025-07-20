@@ -370,12 +370,12 @@
         </div>
     </main>
 
-    <!-- เพิ่มปุ่มเลื่อนขึ้นด้านบน -->
+
     <button class="scroll-top" id="scroll-top" aria-label="เลื่อนขึ้นด้านบน">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- เพิ่มการแจ้งเตือน -->
+
     <div class="notification" id="notification">
         <div class="notification-icon">
             <i class="fas fa-check-circle"></i>
@@ -404,15 +404,13 @@
     </footer>
 
     <script src="scriptgame.js"></script>
-    <!-- แก้ไขสคริปต์ให้ทำงานได้ถูกต้อง -->
     <script>
-        // รอให้หน้าเว็บโหลดเสร็จก่อน
+ 
         document.addEventListener('DOMContentLoaded', function() {
             // บันทึกตำแหน่ง scroll ก่อนรีเฟรช
             const scrollPos = sessionStorage.getItem('scrollPos');
             const currentHash = window.location.hash;
             
-            // ถ้ามี hash ในลิงก์ ให้เลื่อนไปที่ส่วนนั้น
             if (currentHash && currentHash !== '#' && currentHash !== '#top') {
                 const targetElement = document.querySelector(currentHash);
                 if (targetElement) {
@@ -421,18 +419,18 @@
                     }, 300);
                 }
             } 
-            // ถ้าไม่มี hash แต่มีตำแหน่ง scroll ที่บันทึกไว้ ให้เลื่อนไปที่ตำแหน่งนั้น
+
             else if (scrollPos) {
                 window.scrollTo(0, scrollPos);
                 sessionStorage.removeItem('scrollPos');
             }
             
-            // บันทึกตำแหน่ง scroll ก่อนรีเฟรช
+           
             window.addEventListener('beforeunload', function() {
                 sessionStorage.setItem('scrollPos', window.scrollY);
             });
             
-            // เพิ่ม event listener สำหรับลิงก์ภายในเพื่อให้การเลื่อนเป็นแบบ smooth
+         
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
@@ -441,21 +439,21 @@
                         if (targetElement) {
                             e.preventDefault();
                             targetElement.scrollIntoView({behavior: 'smooth'});
-                            // อัปเดต URL โดยไม่ต้องรีโหลดหน้า
+                           
                             history.pushState(null, null, targetId);
                         }
                     }
                 });
             });
             
-            // เพิ่ม event listener สำหรับปุ่มเลื่อนขึ้นด้านบน
+            
             const scrollTopBtn = document.getElementById('scroll-top');
             if (scrollTopBtn) {
                 scrollTopBtn.addEventListener('click', function() {
                     window.scrollTo({top: 0, behavior: 'smooth'});
                 });
                 
-                // แสดงปุ่มเมื่อเลื่อนลงมาเกิน 300px
+              
                 window.addEventListener('scroll', function() {
                     if (window.scrollY > 300) {
                         scrollTopBtn.classList.add('show');
