@@ -641,7 +641,7 @@ function initSnakeGame() {
     
     function pauseGame() {
         isPaused = !isPaused;
-        if (pauseBtn) pauseBtn.textContent = isPaused ? 'Resume' : 'Pause';
+        if (pauseBtn) pauseBtn.textContent = isPaused ? 'ดำเนินการต่อ' : 'หยุดชั่วคราว';
     }
     
     function resetGame() {
